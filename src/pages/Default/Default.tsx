@@ -19,7 +19,7 @@ export const Default = () => {
       <HeroSlider />
       <Categories />
       {products.map(product => (
-        <ProductCard product={product} />
+        <ProductCard product={product} isDiscount />
       ))}
     </PageLayout>
   );
