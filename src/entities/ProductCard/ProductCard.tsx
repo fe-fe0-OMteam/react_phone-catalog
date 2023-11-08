@@ -9,7 +9,6 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: IProduct,
-  isDiscount: boolean,
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -24,7 +23,6 @@ export const ProductCard: React.FC<Props> = ({
     ram,
     image,
   },
-  isDiscount,
 }) => {
   const attributes = useMemo(() => {
     return {
@@ -45,7 +43,6 @@ export const ProductCard: React.FC<Props> = ({
       <Price
         price={price}
         fullPrice={fullPrice}
-        isDiscount={isDiscount}
       />
       <div className={styles.attributes}>
         {Object.entries(attributes).map(([key, value]) => (

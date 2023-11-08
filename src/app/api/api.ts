@@ -1,4 +1,4 @@
-const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
+const API_URL = './_new';
 
 export const $api = <T>(url: string): Promise<T> => {
   return fetch(`${API_URL}/${url}`)

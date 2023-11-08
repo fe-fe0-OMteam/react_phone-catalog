@@ -1,4 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, {
+  Children,
+  ReactNode,
+  useRef,
+  useState,
+} from 'react';
 import {
   Swiper as SwiperType,
   Navigation,
@@ -7,14 +12,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.scss';
 import styles from './ProductsCarousel.module.scss';
-import { IProduct } from '../../entities/ProductCard/product.interface';
-import { ProductCard } from '../../entities/ProductCard/ProductCard';
 import { SecondaryButton } from '../../shared/Buttons/SecondaryButton';
 import { Icon } from '../../shared/Icon';
 
 type Props = {
   title: string,
-  products: IProduct[],
+  children: ReactNode,
 };
 
 interface IDisableBtn {
@@ -22,7 +25,10 @@ interface IDisableBtn {
   end: boolean,
 }
 
-export const ProductsCarousel: React.FC<Props> = ({ title, products }) => {
+export const ProductsCarousel: React.FC<Props> = ({
+  title,
+  children,
+}) => {
   const swiperRef = useRef<SwiperType>();
   const [disableBtn, setDisableBtn] = useState<IDisableBtn>({
     start: true, end: false,
@@ -88,12 +94,12 @@ export const ProductsCarousel: React.FC<Props> = ({ title, products }) => {
           },
         }}
       >
-        {products.map((product) => (
+        {Children.toArray(children).map((child, i) => (
           <SwiperSlide
-            key={product.id}
+            key={i}
             className={styles.slide}
           >
-            <ProductCard product={product} key={product.id} isDiscount />
+            {child}
           </SwiperSlide>
         ))}
       </Swiper>
