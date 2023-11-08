@@ -10,8 +10,9 @@ export const AddCartButton: React.FC<Props> = () => {
   return (
     <PrimaryButton
       isSelected={isSelected}
-      onClick={() => setIsSelected(prevState => !prevState)}>
-      Add to cart
+      onClick={() => setIsSelected(prevState => !prevState)}
+    >
+      {isSelected ? 'Added to cart' : 'Add to cart'}
     </PrimaryButton>
   );
 };

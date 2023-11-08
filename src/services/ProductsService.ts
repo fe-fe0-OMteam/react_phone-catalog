@@ -19,4 +19,12 @@ export class ProductsService {
       return { ...category, total };
     });
   }
+
+  static async getProductsByHotPrices() {
+    const products = await this.getProducts();
+
+    return products.sort((a, b) => {
+      return (b.fullPrice - b.price) - (a.fullPrice - a.price);
+    });
+  }
 }

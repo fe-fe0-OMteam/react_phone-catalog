@@ -16,6 +16,14 @@
   &:hover {
     border-color: $dark-primary;
   }
+
+  &:disabled {
+    cursor: auto;
+    pointer-events: none;
+    fill: $dark-placeholders;
+    color: $dark-elements;
+    border-color: $dark-elements;
+  }
 }
 
 .isSelected {
@@ -24,13 +32,3 @@
   border: none;
 }
 
-.isDisable {
-  color: $dark-elements;
-  border-color: $dark-elements;
-  cursor: auto;
-  pointer-events: none;
-
-  svg {
-    fill: $dark-elements;
-  }
-}
