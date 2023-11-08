@@ -3,6 +3,8 @@ import { PageLayout } from '../../shared/PageLayout';
 import { Categories } from '../../widgets/Categories';
 import { HotPricesCarousel }
   from '../../widgets/HotPricesCarousel/HotPricesCarousel';
+import { BrandNewCarousel }
+  from '../../widgets/BrandNewCarousel/BrandNewCarousel';
 
 export const Default = () => {
   return (
@@ -10,6 +12,7 @@ export const Default = () => {
       <HeroSlider />
       <HotPricesCarousel />
       <Categories />
+      <BrandNewCarousel />
     </PageLayout>
   );
 };

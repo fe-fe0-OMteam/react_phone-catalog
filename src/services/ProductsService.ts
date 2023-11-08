@@ -24,7 +24,20 @@ export class ProductsService {
     const products = await this.getProducts();
 
     return products.sort((a, b) => {
+      if (!a.price || !b.price) {
+        return 1;
+      }
+
       return (b.fullPrice - b.price) - (a.fullPrice - a.price);
     });
+  }
+
+  static async getBrandNewProducts() {
+    const products = await this.getProducts();
+
+    return products.filter(product => !product.price)
+      .sort((a, b) => {
+        return b.fullPrice - a.fullPrice;
+      });
   }
 }
