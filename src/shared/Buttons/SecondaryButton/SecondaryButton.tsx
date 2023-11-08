@@ -11,14 +11,12 @@ interface Props extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement
   children: ReactNode,
   className?: string,
   isSelected?: boolean,
-  isDisable?: boolean,
 }
 
 export const SecondaryButton: React.FC<Props> = ({
   children,
   className,
   isSelected,
-  isDisable,
   ...props
 }) => {
   return (
@@ -26,7 +24,6 @@ export const SecondaryButton: React.FC<Props> = ({
       type="button"
       className={classNames(styles.button, className, {
         [styles.isSelected]: isSelected,
-        [styles.isDisable]: isDisable,
       })}
       {...props}
     >
@@ -38,5 +35,4 @@ export const SecondaryButton: React.FC<Props> = ({
 SecondaryButton.defaultProps = {
   className: '',
   isSelected: false,
-  isDisable: false,
 };
