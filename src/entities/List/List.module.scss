@@ -1,0 +1,10 @@
+@import "../../app/assets/styles";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap:wrap;
+  column-gap: 16px;
+  row-gap: 40px;
+}
