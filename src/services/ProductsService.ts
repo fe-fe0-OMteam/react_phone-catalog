@@ -4,8 +4,12 @@ import { ICategory } from '../entities/Category/category.interface';
 import { $api } from '../app/api/api';
 
 export class ProductsService {
-  static async getProducts() {
-    return $api<IProduct[]>('products.json');
+  static async getProducts(category = '') {
+    const products = await $api<IProduct[]>('products.json');
+
+    return category
+      ? products.filter(product => product.category === category)
+      : products;
   }
 
   static async getCategories(): Promise<ICategory[]> {
@@ -39,5 +43,37 @@ export class ProductsService {
       .sort((a, b) => {
         return b.fullPrice - a.fullPrice;
       });
+  }
+
+  // eslint-disable-next-line max-len
+  static async getProductsByPage(category: string, sortBy: string, page: number, perPage: number) {
+    const phones = await this.getProducts(category);
+    const sorting = (arr: IProduct[], sort: string) => {
+      return arr.sort((a, b) => {
+        switch (sort) {
+          case 'price': {
+            return a.fullPrice - b.fullPrice;
+          }
+
+          case 'age': {
+            return b.year - a.year;
+          }
+
+          case 'name': {
+            return a.name.localeCompare(b.name);
+          }
+
+          default: return 0;
+        }
+      });
+    };
+
+    const sorted = sorting(phones, sortBy);
+    const countOfItems = page * perPage;
+    const paginationIdxStart = countOfItems - perPage;
+    const paginationIdxEnd = countOfItems > sorted.length
+      ? sorted.length : countOfItems;
+
+    return sorted.slice(paginationIdxStart, paginationIdxEnd);
   }
 }
