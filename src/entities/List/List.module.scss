@@ -2,9 +2,19 @@
 
 .wrapper {
   display: flex;
+  width: fit-content;
   flex-direction: row;
-  justify-content: start;
-  flex-wrap:wrap;
+  justify-content: center;
+  flex-wrap: wrap;
   column-gap: 16px;
   row-gap: 40px;
+  z-index: 1;
+
+  @include md-device {
+    justify-content: space-between;
+  }
+
+  @include lg-device {
+    justify-content: start;
+  }
 }

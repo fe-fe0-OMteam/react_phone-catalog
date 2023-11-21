@@ -1,7 +1,5 @@
 import React, {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  ReactNode,
+  ButtonHTMLAttributes, DetailedHTMLProps, ReactNode,
 } from 'react';
 import classNames from 'classnames';
 import styles from './SecondaryButton.module.scss';

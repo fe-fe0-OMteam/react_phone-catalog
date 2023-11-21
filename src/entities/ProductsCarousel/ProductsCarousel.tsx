@@ -96,7 +96,7 @@ export const ProductsCarousel: React.FC<Props> = ({
       >
         {Children.toArray(children).map((child, i) => (
           <SwiperSlide
-            key={i}
+            key={+i}
             className={styles.slide}
           >
             {child}

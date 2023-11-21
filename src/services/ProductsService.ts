@@ -51,15 +51,18 @@ export class ProductsService {
     const sorting = (arr: IProduct[], sort: string) => {
       return arr.sort((a, b) => {
         switch (sort) {
-          case 'price': {
-            return a.fullPrice - b.fullPrice;
+          case 'Cheapest': {
+            const compareA = !a.price ? a.fullPrice : a.price;
+            const compareB = !b.price ? b.fullPrice : b.price;
+
+            return compareA - compareB;
           }
 
-          case 'age': {
+          case 'Newest': {
             return b.year - a.year;
           }
 
-          case 'name': {
+          case 'Alphabetically': {
             return a.name.localeCompare(b.name);
           }
 
@@ -71,7 +74,7 @@ export class ProductsService {
     const sorted = sorting(phones, sortBy);
     const countOfItems = page * perPage;
     const paginationIdxStart = countOfItems - perPage;
-    const paginationIdxEnd = countOfItems > sorted.length
+    const paginationIdxEnd = countOfItems >= sorted.length
       ? sorted.length : countOfItems;
 
     return sorted.slice(paginationIdxStart, paginationIdxEnd);
