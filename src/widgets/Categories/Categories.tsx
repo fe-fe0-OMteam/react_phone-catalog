@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Category } from '../../entities/Category';
 import { ProductsService } from '../../services/ProductsService';
-import { ICategory } from '../../entities/Category/category.interface';
 import styles from './Categories.module.scss';
+import { useAppSelector } from '../../app/hooks/useAppSelector';
+import { useAppDispatch } from '../../app/hooks/useAppDispatch';
+import { setCategories } from '../../entities/Category/reducers/categorySlice';
 
 export const Categories = () => {
-  const [categories, setCategories] = useState<ICategory[]>([]);
+  const { categories } = useAppSelector(state => state.category);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     ProductsService.getCategories()
-      .then(setCategories);
+      .then(c => dispatch(setCategories(c)));
   }, []);
 
   return (

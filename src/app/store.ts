@@ -1,6 +1,12 @@
-import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  combineReducers,
+} from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
+import categoryReducer from '../entities/Category/reducers/categorySlice';
 
 const persistConfig = {
   key: 'root',
@@ -9,6 +15,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  category: categoryReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

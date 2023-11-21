@@ -8,6 +8,7 @@ export const Routing = () => {
       <Route path="/" element={<Default />} />
       <Route path="/phones" element={<Phones />}>
         <Route path=":phoneId" />
+        <Route path=":phoneId" />
       </Route>
     </Routes>
   );
