@@ -2,7 +2,7 @@
     "id": "apple-iphone-15-pro-128gb-gray",
 	"namespaceId": "apple-iphone-15-pro",
 	"name": "Apple iPhone 15 Pro 128GB Gray",
-	"capacityAvailable": ["64GB", "128GB", "512GB"],
+	"capacityAvailable": ["128GB"],
 	"capacity": "128GB",
 	"priceRegular": 1650,
 	"priceDiscount": null,

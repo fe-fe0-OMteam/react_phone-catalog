@@ -4,18 +4,22 @@ import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import styles from './Breadcrumbs.module.scss';
 
-export const Breadcrumbs:React.FC = () => {
+type Props = {
+  name?: string,
+};
+
+export const Breadcrumbs:React.FC<Props> = ({ name }) => {
   const location = useLocation();
   let currentLink = '';
   const crumbs = location.pathname.split('/')
     .filter(crumb => crumb !== '')
-    .map((crumb) => {
+    .map((crumb, i) => {
       currentLink += `/${crumb}`;
-      const crumbsName = crumb[0].toUpperCase() + crumb
-        .replaceAll('-', ' ').slice(1);
+      const crumbsName = i === 0 ? crumb[0].toUpperCase() + crumb
+        .replaceAll('-', ' ').slice(1) : name;
 
       return (
-        <div className={styles.crumb} key={crumb}>
+        <div className={styles.crumb} key={crumb} data-cy="breadCrumbs">
           <Icon className={styles.iconArrow} id="arrow-right" />
           <Link to={currentLink}>{crumbsName}</Link>
         </div>
@@ -30,4 +34,8 @@ export const Breadcrumbs:React.FC = () => {
       {crumbs}
     </div>
   );
+};
+
+Breadcrumbs.defaultProps = {
+  name: '',
 };

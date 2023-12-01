@@ -1,4 +1,4 @@
-const API_URL = './_new';
+const API_URL = '/_new';
 
 export const $api = <T>(url: string): Promise<T> => {
   return fetch(`${API_URL}/${url}`)

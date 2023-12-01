@@ -2,6 +2,7 @@ import { categories } from '../widgets/Categories/categories.data';
 import { IProduct } from '../entities/ProductCard/product.interface';
 import { ICategory } from '../entities/Category/category.interface';
 import { $api } from '../app/api/api';
+import { IProductDetails } from '../pages/ProductDetailsPage/IProductDetalis';
 
 export class ProductsService {
   static async getProducts(category = '') {
@@ -10,6 +11,12 @@ export class ProductsService {
     return category
       ? products.filter(product => product.category === category)
       : products;
+  }
+
+  static async getProductDetails(id = '') {
+    const product = await $api<IProductDetails>(`products/${id}.json`);
+
+    return product;
   }
 
   static async getCategories(): Promise<ICategory[]> {
@@ -34,6 +41,20 @@ export class ProductsService {
 
       return (b.fullPrice - b.price) - (a.fullPrice - a.price);
     });
+  }
+
+  static async getSuggestedProducts() {
+    const products = await this.getProducts();
+    const suggestedProducts = [];
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < 10; i++) {
+      const randomIdx = Math.random() * products.length;
+
+      suggestedProducts.push(products[Math.round(randomIdx)]);
+    }
+
+    return suggestedProducts;
   }
 
   static async getBrandNewProducts() {

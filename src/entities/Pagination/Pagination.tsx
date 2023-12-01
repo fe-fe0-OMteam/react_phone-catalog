@@ -46,11 +46,12 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <div className={styles.btnsWrapper}>
+    <div className={styles.btnsWrapper} data-cy="pagination">
       <SecondaryButton
         onClick={() => handleChangePage(false)}
         disabled={currentPage === pages[0]}
         className={styles.paginationBtn}
+        data-cy="paginationLeft"
       >
         <Icon className={styles.icon} id="arrow-left" />
       </SecondaryButton>
@@ -70,6 +71,7 @@ export const Pagination: React.FC<Props> = ({
         onClick={() => handleChangePage(true)}
         disabled={currentPage === pages[pages.length - 1]}
         className={styles.paginationBtn}
+        data-cy="paginationRight"
       >
         <Icon className={styles.icon} id="arrow-right" />
       </SecondaryButton>
