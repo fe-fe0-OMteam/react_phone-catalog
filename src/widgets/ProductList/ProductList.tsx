@@ -31,6 +31,8 @@ export const ProductList: React.FC<Props> = ({ category = '' }) => {
       .getProductsByPage(category, sortBy, currentPage,
         Number(perPage) || total)
       .then(setProducts);
+
+    window.scrollTo(0, 0);
   }, [perPage, sortBy, currentPage, location]);
   const lastPage = Math.round(total / (Number(perPage) || total));
 

@@ -8,8 +8,8 @@ type Props = {
 export const Actions: React.FC<Props> = ({ children }) => {
   return (
     <div className={styles.actions}>
-      {Children.toArray(children).map(child => (
-        <div className={styles.action}>
+      {Children.toArray(children).map((child, i) => (
+        <div className={styles.action} key={+i}>
           {child}
         </div>
       ))}

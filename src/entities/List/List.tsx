@@ -7,7 +7,7 @@ type Props = {
 
 export const List: React.FC<Props> = ({ children }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-cy="productList">
       {children}
     </div>
   );

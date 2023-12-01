@@ -1,17 +1,17 @@
 {
-    "id": "apple-iphone-15-128gb-green",
+    "id": "apple-iphone-15-128gb-yellow",
 	"namespaceId": "apple-iphone-15",
-	"name": "Apple iPhone 15 128GB Green",
-	"capacityAvailable": ["64GB", "128GB", "128GB"],
+	"name": "Apple iPhone 15 128GB Yellow",
+	"capacityAvailable": ["128GB"],
 	"capacity": "128GB",
 	"priceRegular": 1260,
 	"priceDiscount": null,
 	"colorsAvailable": ["black", "green", "yellow", "pink"],
-	"color": "green",
+	"color": "yellow",
 	"images": [
-		"img/phones/apple-iphone-15/green/00.jpg",
-		"img/phones/apple-iphone-15/green/01.jpg",
-		"img/phones/apple-iphone-15/green/02.jpg",
+		"img/phones/apple-iphone-15/yellow/00.jpg",
+		"img/phones/apple-iphone-15/yellow/01.jpg",
+		"img/phones/apple-iphone-15/yellow/02.jpg"
 	],
 	"description": [
 		{

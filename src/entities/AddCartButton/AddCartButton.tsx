@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PrimaryButton } from '../../../../shared/Buttons/PrimaryButton';
+import { PrimaryButton } from '../../shared/Buttons/PrimaryButton';
 
 type Props = {
 };

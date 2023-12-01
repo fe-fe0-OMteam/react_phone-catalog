@@ -1,9 +1,9 @@
 {
-    "id": "apple-iphone-15-256gb-pink",
+    "id": "apple-iphone-15-128gb-pink",
 	"namespaceId": "apple-iphone-15",
-	"name": "Apple iPhone 15 256GB Pink",
-	"capacityAvailable": ["64GB", "128GB", "256GB"],
-	"capacity": "256GB",
+	"name": "Apple iPhone 15 128GB Pink",
+	"capacityAvailable": ["128GB"],
+	"capacity": "128GB",
 	"priceRegular": 1300,
 	"priceDiscount": null,
 	"colorsAvailable": ["black", "green", "yellow", "pink"],
@@ -11,7 +11,7 @@
 	"images": [
 		"img/phones/apple-iphone-15/pink/00.jpg",
 		"img/phones/apple-iphone-15/pink/01.jpg",
-		"img/phones/apple-iphone-15/pink/02.jpg",
+		"img/phones/apple-iphone-15/pink/02.jpg"
 	],
 	"description": [
 		{

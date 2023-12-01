@@ -18,7 +18,7 @@ export const Categories = () => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Shop by category</h2>
-      <div className={styles.body}>
+      <div className={styles.body} data-cy="categoryLinksContainer">
         {categories.map(category => (
           <Category key={category.name} category={category} />
         ))}

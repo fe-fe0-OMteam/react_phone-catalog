@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from './AddFavouritesButton.module.scss';
-import { SecondaryButton } from '../../../../shared/Buttons/SecondaryButton';
-import { Icon } from '../../../../shared/Icon';
+import { SecondaryButton } from '../../shared/Buttons/SecondaryButton';
+import { Icon } from '../../shared/Icon';
 
 type Props = {
 };
