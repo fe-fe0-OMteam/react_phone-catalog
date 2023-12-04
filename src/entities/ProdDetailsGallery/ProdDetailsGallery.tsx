@@ -43,7 +43,6 @@ export const ProdDetailsGallery: React.FC<Props> = ({ images = [] }) => {
       </Swiper>
       <Swiper
         modules={[Navigation, Thumbs]}
-        spaceBetween={16}
         slidesPerView={1}
         thumbs={{ swiper: thumbsSwiper.current }}
         className={styles.swiper}
