@@ -55,6 +55,7 @@ export const ProductDetailsPage: React.FC = () => {
         .replace(currentOption.toLowerCase(), newOption.toLowerCase());
 
       navigate(pathname.replace(phoneId, newId));
+      window.location.reload();
     }
   };
 

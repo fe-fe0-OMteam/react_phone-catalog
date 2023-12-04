@@ -33,6 +33,7 @@
   height: 80px;
   padding: 7px;
   border: 1px solid #c4c4c4;
+  cursor: pointer;
 }
 
 .imgThumb {
@@ -43,25 +44,19 @@
 
 .swiper {
   display: flex;
+  max-width: 464px;
   width: 100%;
 }
 
 .wrapperSlide {
-  max-height: 442px;
   display: flex;
   justify-content: center;
+  max-height: 442px;
+  max-width: 442px;
   width: 100%;
 }
 
 .imgSlide {
-  max-width: 100%;
-  object-fit: scale-down;
-
-  @include md-device {
-    object-fit: contain;
-  }
-
-  @include lg-device {
-    object-fit: scale-down;
-  }
+  width: 100%;
+  object-fit: contain;
 }
