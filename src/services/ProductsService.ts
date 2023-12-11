@@ -3,6 +3,7 @@ import { IProduct } from '../entities/ProductCard/product.interface';
 import { ICategory } from '../entities/Category/category.interface';
 import { $api } from '../app/api/api';
 import { IProductDetails } from '../pages/ProductDetailsPage/IProductDetalis';
+import { EAvailableAreas } from '../features/Search/EAvailableAreas';
 
 export class ProductsService {
   static async getProducts(category = '') {
@@ -99,5 +100,26 @@ export class ProductsService {
       ? sorted.length : countOfItems;
 
     return sorted.slice(paginationIdxStart, paginationIdxEnd);
+  }
+
+  static async getSearchedProducts(area: string, value: string) {
+    switch (area) {
+      case EAvailableAreas.Accessories:
+      case EAvailableAreas.Phones:
+      case EAvailableAreas.Tablets: {
+        const products = await this.getProducts(area);
+
+        return value
+          ? products.filter(product => product.name.toLowerCase()
+            .includes(value.toLowerCase()))
+          : [];
+      }
+      // case EAvailableAreas.Favourites: {
+      //   return
+      // }
+
+      default:
+        return [];
+    }
   }
 }

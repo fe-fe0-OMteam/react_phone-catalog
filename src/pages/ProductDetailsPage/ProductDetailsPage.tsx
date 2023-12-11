@@ -15,10 +15,12 @@ import { Attribute } from './ui/Attribute';
 import {
   SuggestedProductsCarousel,
 } from '../../widgets/SuggestedProductsCarousel';
+import { Loader } from '../../shared/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const [currentProduct, setCurrentProduct]
     = useState<IProductDetails>({} as IProductDetails);
+  const [isLoading, setIsLoading] = useState(false);
   const { phoneId } = useParams();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -42,9 +44,11 @@ export const ProductDetailsPage: React.FC = () => {
   } = currentProduct;
 
   useEffect(() => {
+    setIsLoading(true);
     ProductsService
       .getProductDetails(phoneId)
-      .then(setCurrentProduct);
+      .then(setCurrentProduct)
+      .finally(() => setIsLoading(false));
 
     window.scrollTo(0, 0);
   }, [phoneId]);
@@ -92,6 +96,7 @@ export const ProductDetailsPage: React.FC = () => {
         <BackButton />
         <h1>{name}</h1>
       </div>
+      {isLoading && <Loader />}
       <div className={styles.productMainBlock}>
         <ProdDetailsGallery images={images} />
         <div className={styles.rightSideWrapper}>

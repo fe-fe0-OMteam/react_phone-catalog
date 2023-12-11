@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './ProductList.module.scss';
 import { EPerPage } from './PerPage.enum';
@@ -11,6 +10,7 @@ import { List } from '../../entities/List';
 import { ProductCard } from '../../entities/ProductCard/ProductCard';
 import { Dropdown } from '../../shared/Dropdown';
 import { Pagination } from '../../entities/Pagination';
+import { Loader } from '../../shared/Loader';
 
 type Props = {
   category?: string,
@@ -18,22 +18,26 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({ category = '' }) => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const location = useLocation();
   const { categories } = useAppSelector(state => state.category);
-  const { total } = categories.filter(c => c.name === category)[0];
   const [searchParams, setSearchParams] = useSearchParams();
   const perPage = searchParams.get('perPage') || EPerPage.Sixteen;
   const sortBy = searchParams.get('sortBy') || ESortBy.Newest;
+  const { searchedProducts, searchedValue }
+    = useAppSelector(state => state.search);
+  const { total } = categories.filter(c => c.name === category)[0];
 
   useEffect(() => {
+    setIsLoading(true);
     ProductsService
       .getProductsByPage(category, sortBy, currentPage,
         Number(perPage) || total)
-      .then(setProducts);
+      .then(setProducts)
+      .finally(() => setIsLoading(false));
 
     window.scrollTo(0, 0);
-  }, [perPage, sortBy, currentPage, location]);
+  }, [perPage, sortBy, currentPage]);
   const lastPage = Math.round(total / (Number(perPage) || total));
 
   const setPerPage = (value: string) => {
@@ -48,29 +52,39 @@ export const ProductList: React.FC<Props> = ({ category = '' }) => {
     setSearchParams(searchParams);
   };
 
+  const productsForView = useMemo(() => {
+    return searchedValue ? searchedProducts : products;
+  }, [products, searchedProducts]);
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.dropdowns}>
-        <Dropdown label="Sort by" onChange={setSortBy} current={sortBy}>
-          {(Object.values(ESortBy) as Array<string>)}
-        </Dropdown>
-
-        <Dropdown label="Items on page" onChange={setPerPage} current={perPage}>
-          {(Object.values(EPerPage) as Array<string>)}
-        </Dropdown>
-      </div>
-
+      {!searchedValue && (
+        <div className={styles.dropdowns}>
+          <Dropdown label="Sort by" onChange={setSortBy} current={sortBy}>
+            {(Object.values(ESortBy) as Array<string>)}
+          </Dropdown>
+          {/* eslint-disable-next-line max-len */}
+          <Dropdown label="Items on page" onChange={setPerPage} current={perPage}>
+            {(Object.values(EPerPage) as Array<string>)}
+          </Dropdown>
+        </div>
+      )}
+      {isLoading && <Loader />}
       <List>
-        {products.map((prod, i) => (<ProductCard product={prod} key={+i} />))}
+        {productsForView.map((prod, i) => (
+          <ProductCard product={prod} key={+i} />
+        ))}
       </List>
 
-      <Pagination
-        lastPage={lastPage}
-        totalCount={total}
-        pageSize={+perPage}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      {!searchedValue && (
+        <Pagination
+          lastPage={lastPage}
+          totalCount={total}
+          pageSize={+perPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      )}
     </div>
   );
 };
