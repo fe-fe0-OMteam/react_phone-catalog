@@ -7,6 +7,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import categoryReducer from '../entities/Category/reducers/categorySlice';
+import searchReducer from '../features/Search/reducers/searchSlice';
 
 const persistConfig = {
   key: 'root',
@@ -16,6 +17,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   category: categoryReducer,
+  search: searchReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
