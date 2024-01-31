@@ -1,4 +1,4 @@
-describe('Tablets and accessories', () => {
+describe('Accessories and accessories', () => {
   it('should show only tablets on the "TabletsPage"', () => {
     cy.intercept('**products.json', { fixture: 'differentProds' });
 
@@ -39,6 +39,6 @@ describe('Tablets and accessories', () => {
 
     cy.visit('#/tablets');
 
-    cy.contains('Tablets not found');
+    cy.contains('Accessories not found');
   });
 });

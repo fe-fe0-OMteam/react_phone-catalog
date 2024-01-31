@@ -63,8 +63,8 @@ to links container.
     - Hide all the pagination elements if there are a few items (less than 1 smallest page size)
     - (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
 
-## Tablets and accessories
-1. Create `TabletsPage` page with `<h1>` title `Tablets` available at `/tablets` working the same way as `PhonesPage`
+## Accessories and accessories
+1. Create `TabletsPage` page with `<h1>` title `Accessories` available at `/tablets` working the same way as `PhonesPage`
     - Create `getTablets` method fetching the products with `type`: `tablet`
 1. Create `AccessoriesPage` with `<h1>` title `Accessories` page available at `/accessories` working the same way as `PhonesPage`
     - Create `getAccessories` method fetching the products with `type`: `accessory`
