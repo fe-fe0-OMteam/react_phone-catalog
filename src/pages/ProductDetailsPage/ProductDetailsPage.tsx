@@ -25,6 +25,7 @@ export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const {
+    id,
     name,
     priceRegular,
     colorsAvailable,
@@ -120,8 +121,8 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
             <Price price={priceDiscount} fullPrice={priceRegular} />
             <div className={styles.buttonsWrapper}>
-              <AddCartButton />
-              <AddFavouritesButton />
+              <AddCartButton productId={id} />
+              <AddFavouritesButton productId={id} />
             </div>
             <div className={styles.attributesWrapper}>
               {Object.entries(attributes).map(([key, value]) => (
