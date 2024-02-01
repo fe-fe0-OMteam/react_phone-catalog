@@ -12,9 +12,9 @@ import { Price } from './ui/Price';
 import { AddCartButton } from '../../entities/AddCartButton';
 import { AddFavouritesButton } from '../../entities/AddFavouritesButton';
 import { Attribute } from './ui/Attribute';
-import {
-  SuggestedProductsCarousel,
-} from '../../widgets/SuggestedProductsCarousel';
+// import {
+//   SuggestedProductsCarousel,
+// } from '../../widgets/SuggestedProductsCarousel';
 import { Loader } from '../../shared/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
@@ -138,8 +138,8 @@ export const ProductDetailsPage: React.FC = () => {
           <h2>About</h2>
           <span className={styles.line} />
           {
-            description.map(({ title, text }, i) => (
-              <article key={+i} className={styles.article}>
+            description.map(({ title, text }) => (
+              <article key={title} className={styles.article}>
                 <h3>{title}</h3>
                 <div className={styles.textDescription}>{text}</div>
               </article>
@@ -156,7 +156,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <SuggestedProductsCarousel />
+      {/*<SuggestedProductsCarousel />*/}
     </PageLayout>
   );
 };

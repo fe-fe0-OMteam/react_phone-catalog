@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IFavourite } from '../favourite.interface';
 
-export interface ICartState {
+export interface IFavouritesState {
   favourites: IFavourite[],
 }
 
-const initialState: ICartState = {
+const initialState: IFavouritesState = {
   favourites: [],
 };
 
@@ -14,10 +14,11 @@ export const favouritesSlice = createSlice({
   name: 'favourites',
   initialState,
   reducers: {
-    addFavourite: (state, action) => {
+    addFavourite: (state: IFavouritesState, action: PayloadAction<string>) => {
       state.favourites.push({ id: action.payload });
     },
-    removeFavourite: (state, action) => {
+    // eslint-disable-next-line max-len
+    removeFavourite: (state: IFavouritesState, action: PayloadAction<string>) => {
       state.favourites = state.favourites.filter(favourite => {
         return favourite.id !== action.payload;
       });
