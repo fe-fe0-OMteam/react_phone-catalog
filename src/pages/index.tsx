@@ -4,6 +4,7 @@ import { Phones } from './Phones';
 import { ProductDetailsPage } from './ProductDetailsPage';
 import { Tablets } from './Tablets';
 import { Accessories } from './Accessories';
+import { FavouritesPage } from './FavouritesPage/FavouritesPage';
 
 export const Routing = () => {
   return (
@@ -15,6 +16,7 @@ export const Routing = () => {
       </Route>
       <Route path="tablets" element={<Tablets />} />
       <Route path="accessories" element={<Accessories />} />
+      <Route path="favourites" element={<FavouritesPage />} />
     </Routes>
   );
 };

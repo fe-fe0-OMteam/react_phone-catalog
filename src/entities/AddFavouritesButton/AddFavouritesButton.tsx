@@ -15,10 +15,9 @@ type Props = {
 export const AddFavouritesButton: React.FC<Props> = ({ productId }) => {
   const { favourites } = useAppSelector(state => state.favourites);
   const dispatch = useAppDispatch();
-
   const isSelected = useMemo(() => {
     return favourites.some(favourite => favourite.id === productId);
-  }, [favourites]);
+  }, [favourites, productId]);
 
   const handleAddToFavourites = () => {
     if (isSelected) {

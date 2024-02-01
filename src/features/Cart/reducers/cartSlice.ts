@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IEntry } from '../entry.interface';
 
 export interface ICartState {
@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addProduct: (state, action) => {
+    addProduct: (state: ICartState, action: PayloadAction<string>) => {
       const item = state.entries.find((entry) => {
         return entry.id === action.payload;
       });
@@ -25,7 +25,7 @@ export const cartSlice = createSlice({
         state.entries.push({ id: action.payload, quantity: 1 });
       }
     },
-    incrementQuantity: (state, action) => {
+    incrementQuantity: (state: ICartState, action: PayloadAction<string>) => {
       const item = state.entries.find((entry) => entry.id === action.payload);
 
       if (!item) {
@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
 
       item.quantity += 1;
     },
-    decrementQuantity: (state, action) => {
+    decrementQuantity: (state: ICartState, action: PayloadAction<string>) => {
       const item = state.entries.find((entry) => entry.id === action.payload);
 
       if (!item) {
@@ -47,7 +47,7 @@ export const cartSlice = createSlice({
         item.quantity -= 1;
       }
     },
-    removeProduct: (state, action) => {
+    removeProduct: (state: ICartState, action: PayloadAction<string>) => {
       state.entries = state.entries.filter(entry => {
         return entry.id !== action.payload;
       });
