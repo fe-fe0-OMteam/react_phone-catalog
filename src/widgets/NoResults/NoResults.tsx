@@ -9,12 +9,10 @@ export const NoResults: React.FC<Props> = ({ name }) => {
   return (
     <div className={styles.container}>
       Ooo-oops!
-      {' '}
       <br />
-      {' '}
-      {name}
-      {' '}
-      not found :(
+      {name === 'cart'
+        ? 'Cart is empty :('
+        : `${name} not found :(`}
     </div>
   );
 };

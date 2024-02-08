@@ -5,6 +5,8 @@ import { $api } from '../app/api/api';
 import { IProductDetails } from '../pages/ProductDetailsPage/IProductDetalis';
 import { EAvailableAreas } from '../features/Search/EAvailableAreas';
 import { IFavourite } from '../features/Favourites/favourite.interface';
+import { IEntry } from '../features/Cart/entry.interface';
+import { ICartEntry } from '../entities/CartEntry/cartEntry.interface';
 
 export class ProductsService {
   static async getProducts(category = '') {
@@ -137,5 +139,19 @@ export class ProductsService {
 
     return products.filter(product => idArr
       .some(iProd => product.itemId === iProd.id));
+  }
+
+  static async getProductsFromCart(entries: IEntry[]) :Promise<ICartEntry[]> {
+    const products = await $api<IProduct[]>('products.json');
+
+    return entries.map(entry => {
+      const product = products.find(prod => prod.itemId === entry.id);
+
+      if (!product) {
+        throw new Error(`Product not found for entry with id ${entry.id}`);
+      }
+
+      return { ...entry, ...product };
+    });
   }
 }

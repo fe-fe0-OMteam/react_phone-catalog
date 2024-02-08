@@ -1,7 +1,7 @@
 import { page } from '../support/utils/common.js';
 
 describe('Product details', () => {
-    it('should have "ProductCard" as a link to the details page', () => {
+    it('should have "CartEntry" as a link to the details page', () => {
         page.getProduct();
 
         cy.url()

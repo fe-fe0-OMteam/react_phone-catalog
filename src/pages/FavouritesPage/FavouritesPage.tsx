@@ -23,8 +23,6 @@ export const FavouritesPage: React.FC = () => {
       .getFavouritesProducts(favourites)
       .then(setProducts)
       .finally(() => setIsLoading(false));
-
-    window.scrollTo(0, 0);
   }, [favourites]);
 
   const productsForView = useMemo(() => {

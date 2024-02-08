@@ -12,9 +12,8 @@ import { Price } from './ui/Price';
 import { AddCartButton } from '../../entities/AddCartButton';
 import { AddFavouritesButton } from '../../entities/AddFavouritesButton';
 import { Attribute } from './ui/Attribute';
-// import {
-//   SuggestedProductsCarousel,
-// } from '../../widgets/SuggestedProductsCarousel';
+// eslint-disable-next-line max-len
+import { SuggestedProductsCarousel } from '../../widgets/SuggestedProductsCarousel';
 import { Loader } from '../../shared/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
@@ -130,7 +129,7 @@ export const ProductDetailsPage: React.FC = () => {
               ))}
             </div>
           </div>
-          <span className={styles.id}>ID: 235183</span>
+          <span className={styles.id}>{`ID: ${priceRegular * 89}MD`}</span>
         </div>
       </div>
       <div className={styles.productDescription}>
@@ -156,7 +155,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       </div>
-      {/*<SuggestedProductsCarousel />*/}
+      <SuggestedProductsCarousel />
     </PageLayout>
   );
 };

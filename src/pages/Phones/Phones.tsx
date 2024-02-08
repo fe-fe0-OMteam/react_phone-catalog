@@ -33,7 +33,6 @@ export const Phones: React.FC = () => {
                 total ? <span className={styles.span}>{`${total} models`}</span>
                   : <NoResults name="phones" />
               }
-              <span className={styles.span}>{`${total} models`}</span>
             </div>
           </>
         )}

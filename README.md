@@ -40,7 +40,7 @@ Store the Cart in the `localStorage`
     - Create `getHotPriceProducts` method fetching products with discount from API
       sorted by absolute discount value (not percentage given in API)
     - For now do all the filtering and sorting on client side
-    - Create `ProductCard` component to use it everywhere and add `data-cy="cardsContainer"` attribute to the container of these elements
+    - Create `CartEntry` component to use it everywhere and add `data-cy="cardsContainer"` attribute to the container of these elements
     - Add ability to use `<` and `>` buttons to scroll products.
 1. Add `Brand new` block using `ProductsSlider`
     - Create `getBrandNewProducts` method fetching products without a discount from the API starting from the most expensive
@@ -72,7 +72,7 @@ to links container.
 
 ### Product details page
 1. Create `ProductDetailsPage` available at `/product/:productId`
-    - `ProductCard` should be a link to the details page
+    - `CartEntry` should be a link to the details page
 1. Fetch phone details from API taking the `phoneId` from the URL
     - Use `Loader` when fetching the details
 1. Show the details on the page
